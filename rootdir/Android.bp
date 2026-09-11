@@ -7,8 +7,15 @@
 prebuilt_etc {
     name: "fstab.mt6768",
     src: "etc/fstab.mt6768",
+    filename: "fstab.mt6768",
     vendor: true,
     ramdisk_available: true,
+
+    product_variables: {
+        product_virtual_ab_ota: {
+            src: "etc/fstab_vab.mt6768",
+        },
+    },
 }
 
 prebuilt_etc {
@@ -57,4 +64,9 @@ prebuilt_etc {
     filename: "ueventd.rc",
     src: "etc/ueventd.mtk.rc",
     vendor: true,
+    product_variables: {
+        product_virtual_ab_ota: {
+            src: "etc/ueventd_vab.mtk.rc",
+        },
+    },
 }

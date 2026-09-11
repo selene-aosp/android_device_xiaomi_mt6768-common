@@ -10,8 +10,13 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 # Project ID Quota
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
-# Non_ab_device
-$(call inherit-product, $(SRC_TARGET_DIR)/product/non_ab_device.mk)
+ifeq ($(AB_OTA_UPDATER), true)
+    # A/B
+    $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
+else
+    # Non_ab_device
+    $(call inherit-product, $(SRC_TARGET_DIR)/product/non_ab_device.mk)
+endif
 
 # Default dalvik heap config
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
